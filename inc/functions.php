@@ -516,7 +516,7 @@ function printNavbar() {
 							<span class="icon-bar"></span>
 						</button>';
 						global $isBday;
-						echo $isBday ? '<a class="navbar-brand" href="index.php"><i class="fa fa-birthday-cake"></i><img src="images/logos/text.png" style="display: inline; padding-left: 10px;"></a>' : '<a class="navbar-brand" href="index.php"><img src="/images/logos/text.png"></a>';
+						echo $isBday ? '<a class="navbar-brand" href="index.php"><i class="fa fa-birthday-cake"></i><img src="images/logos/text.png" style="display: inline; padding-left: 10px; padding-top:-5px;"></a>' : '<a class="navbar-brand" href="index.php"><img src="/images/logos/text.png"></a>';
 					echo '</div>
 					<div class="navbar-collapse collapse">';
 	// Left elements
@@ -564,7 +564,6 @@ function printNavbar() {
                         <li class="dropdown-submenu"><a href="/p/26"><i class="fa fa-users"></i> Friend list</a></li>  
                         <li class="dropdown-submenu"><a href="/p/5"><i class="fa fa-photo"></i> Change Avatar</a></li>   
                         <li class="dropdown-submenu"><a href="/p/8"><i class="fa fa-font"></i> Edit Userpage</a></li>  
-                        <li class="dropdown-submenu"><a href="/p/30"><i class="fa fa-vk"></i> Two-Factor Auth</a></li> 
 						<li class="dropdown-submenu"><a href="/submit.php?action=logout"><i class="fa fa-sign-out"></i>	Logout</a></li>
 					</ul>
 				</li>';
