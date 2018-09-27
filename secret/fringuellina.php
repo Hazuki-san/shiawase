@@ -297,7 +297,7 @@ class Fringuellina {
 
 		echo '<table class="table table-striped table-hover table-center"><tbody>';
 
-		echo '<form id="system-settings-form" action="submit.php" method="POST"></form>';
+		echo '<form id="system-settings-form" action="/submit.php" method="POST"></form>';
 
 		echo '<tr>
 		<td width=1>ID</td>
@@ -448,7 +448,7 @@ class Fringuellina {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="quick-lookup-user-id" action="submit.php" method="POST">
+		<form id="quick-lookup-user-id" action="/submit.php" method="POST">
 		<input name="action" value="toggleCake" hidden>
 		<input name="extra_action" value="quickLookupUser" hidden>
 		<div class="input-group">
@@ -477,7 +477,7 @@ class Fringuellina {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="quick-lookup-score-id" action="submit.php" method="POST">
+		<form id="quick-lookup-score-id" action="/submit.php" method="POST">
 		<input name="action" value="toggleCake" hidden>
 		<input name="extra_action" value="quickLookupScoreid" hidden>
 		<div class="input-group">

@@ -201,26 +201,26 @@ class P {
 			echo '<td><p class="text-center"><span class="label label-'.$allowedColor.'">'.$allowedText.'</span></p></td>';
 			echo '<td><p class="text-center">
 			<div class="btn-group-justified">
-			<a title="Edit user" class="btn btn-xs btn-primary" href="index.php?p=103&id='.$user['id'].'"><span class="glyphicon glyphicon-pencil"></span></a>';
+			<a title="Edit user" class="btn btn-xs btn-primary" href="/index.php?p=103&id='.$user['id'].'"><span class="glyphicon glyphicon-pencil"></span></a>';
 			if (hasPrivilege(Privileges::AdminBanUsers)) {
 				if (isBanned($user["id"])) {
-					echo '<a title="Unban user" class="btn btn-xs btn-success" onclick="sure(\'submit.php?action=banUnbanUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-thumbs-up"></span></a>';
+					echo '<a title="Unban user" class="btn btn-xs btn-success" onclick="sure(\'/submit.php?action=banUnbanUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-thumbs-up"></span></a>';
 				} else {
-					echo '<a title="Ban user" class="btn btn-xs btn-warning" onclick="sure(\'submit.php?action=banUnbanUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-thumbs-down"></span></a>';
+					echo '<a title="Ban user" class="btn btn-xs btn-warning" onclick="sure(\'/submit.php?action=banUnbanUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-thumbs-down"></span></a>';
 				}
 				if (isRestricted($user["id"])) {
-					echo '<a title="Remove restrictions" class="btn btn-xs btn-success" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-ok-circle"></span></a>';
+					echo '<a title="Remove restrictions" class="btn btn-xs btn-success" onclick="sure(\'/submit.php?action=restrictUnrestrictUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-ok-circle"></span></a>';
 				} else {
-					echo '<a title="Restrict user" class="btn btn-xs btn-warning" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-remove-circle"></span></a>';
+					echo '<a title="Restrict user" class="btn btn-xs btn-warning" onclick="sure(\'/submit.php?action=restrictUnrestrictUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-remove-circle"></span></a>';
 				}
 			}
-			echo '	<a title="Change user identity" class="btn btn-xs btn-danger" href="index.php?p=104&id='.$user['id'].'"><span class="glyphicon glyphicon-refresh"></span></a>
+			echo '	<a title="Change user identity" class="btn btn-xs btn-danger" href="/index.php?p=104&id='.$user['id'].'"><span class="glyphicon glyphicon-refresh"></span></a>
 			</div>
 			</p></td>';
 			echo '</tr>';
 		}
 		echo '</tbody></table>';
-		echo '<p align="center"><a href="index.php?p=102&from='.($from-($pageInterval+1)).'">< Previous page</a> | <a href="index.php?p=102&from='.($to).'">Next page ></a></p>';
+		echo '<p align="center"><a href="/index.php?p=102&from='.($from-($pageInterval+1)).'">< Previous page</a> | <a href="index.php?p=102&from='.($to).'">Next page ></a></p>';
 		echo '</div>';
 		// Quick edit modal
 		echo '<div class="modal fade" id="quickEditUserModal" tabindex="-1" role="dialog" aria-labelledby="quickEditUserModalLabel">
@@ -232,7 +232,7 @@ class P {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="quick-edit-user-form" action="submit.php" method="POST">
+		<form id="quick-edit-user-form" action="/submit.php" method="POST">
 		<input name="action" value="quickEditUser" hidden>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
@@ -258,7 +258,7 @@ class P {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="quick-edit-user-email-form" action="submit.php" method="POST">
+		<form id="quick-edit-user-email-form" action="/submit.php" method="POST">
 		<input name="action" value="quickEditUserEmail" hidden>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
@@ -284,7 +284,7 @@ class P {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="silence-user-form" action="submit.php" method="POST">
+		<form id="silence-user-form" action="/submit.php" method="POST">
 
 		<input name="action" value="silenceUser" hidden>
 
@@ -337,7 +337,7 @@ class P {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="kick-user-form" action="submit.php" method="POST">
+		<form id="kick-user-form" action="/submit.php" method="POST">
 
 		<input name="action" value="kickUser" hidden>
 		<div class="input-group">
@@ -435,7 +435,7 @@ class P {
 
 			echo '<p align="center"><font size=5><i class="fa fa-user"></i>	Edit user</font></p>';
 			echo '<table class="table table-striped table-hover table-75-center edit-user">';
-			echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
+			echo '<tbody><form id="system-settings-form" action="/submit.php" method="POST">
 			<input name="action" value="saveEditUser" hidden>';
 			echo '<tr>
 			<td>ID</td>
@@ -567,7 +567,7 @@ class P {
 				</tr>';
 			}
 			echo '<tr>
-			<td>Avatar<br><a onclick="sure(\'submit.php?action=resetAvatar&id='.$_GET['id'].'\')">(reset avatar)</a></td>
+			<td>Avatar<br><a onclick="sure(\'/submit.php?action=resetAvatar&id='.$_GET['id'].'\')">(reset avatar)</a></td>
 			<td>
 				<p align="center">
 					<img src="'.URL::Avatar().'/'.$_GET['id'].'" height="50" width="50"></img>
@@ -621,16 +621,16 @@ class P {
 							<a title="Pin/Unpin" class="unpin btn btn-xs btn-primary no-mobile"><span class="glyphicon glyphicon-pushpin"></span></a></li>
 							<li class="list-group-item mobile-flex">';
 								if (hasPrivilege(Privileges::AdminManageBadges)) {
-									echo '<a href="index.php?p=110&id='.$_GET['id'].'" class="btn btn-success">Edit badges</a>';
+									echo '<a href="/index.php?p=110&id='.$_GET['id'].'" class="btn btn-success">Edit badges</a>';
 								}
-								echo '	<a href="index.php?p=104&id='.$_GET['id'].'" class="btn btn-info">Change identity</a>';
+								echo '	<a href="/index.php?p=104&id='.$_GET['id'].'" class="btn btn-info">Change identity</a>';
 								if (hasPrivilege(Privileges::UserDonor, $_GET["id"])) {
-									echo '	<a onclick="sure(\'submit.php?action=removeDonor&id='.$_GET['id'].'\');" class="btn btn-danger">Remove donor</a>';
+									echo '	<a onclick="sure(\'/submit.php?action=removeDonor&id='.$_GET['id'].'\');" class="btn btn-danger">Remove donor</a>';
 								}
-								echo '	<a href="index.php?p=121&id='.$_GET['id'].'" class="btn btn-warning">Give donor</a>';
-								echo '	<a href="index.php?u='.$_GET['id'].'" class="btn btn-primary">View profile</a>';
+								echo '	<a href="/index.php?p=121&id='.$_GET['id'].'" class="btn btn-warning">Give donor</a>';
+								echo '	<a href="/index.php?u='.$_GET['id'].'" class="btn btn-primary">View profile</a>';
 								if (hasPrivilege(Privileges::AdminManageUsers)) {
-									echo '	<a href="index.php?p=132&uid=' . $_GET['id'] . '" class="btn btn-danger">View anticheat reports</a>';
+									echo '	<a href="/index.php?p=132&uid=' . $_GET['id'] . '" class="btn btn-danger">View anticheat reports</a>';
 								}
 							echo '</li>
 						</ul>';
@@ -639,15 +639,15 @@ class P {
 						<li class="list-group-item list-group-item-danger">Dangerous Zone</li>
 						<li class="list-group-item mobile-flex">';
 						if (hasPrivilege(Privileges::AdminWipeUsers)) {
-							echo '	<a href="index.php?p=123&id='.$_GET["id"].'" class="btn btn-danger">Wipe account</a>';
-							echo '	<a href="index.php?p=122&id='.$_GET["id"].'" class="btn btn-danger">Rollback account</a>';
-							echo '	<a href="index.php?p=134&id='.$_GET["id"].'" class="btn btn-danger">Restore scores</a>';
+							echo '	<a href="/index.php?p=123&id='.$_GET["id"].'" class="btn btn-danger">Wipe account</a>';
+							echo '	<a href="/index.php?p=122&id='.$_GET["id"].'" class="btn btn-danger">Rollback account</a>';
+							echo '	<a href="/index.php?p=134&id='.$_GET["id"].'" class="btn btn-danger">Restore scores</a>';
 						}
 						if (hasPrivilege(Privileges::AdminBanUsers)) {
-							echo '	<a onclick="sure(\'submit.php?action=banUnbanUser&id='.$_GET['id'].'\')" class="btn btn-danger">(Un)ban user</a>';
-							echo '	<a onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$_GET['id'].'\')" class="btn btn-danger">(Un)restrict user</a>';
-							echo '	<a onclick="sure(\'submit.php?action=lockUnlockUser&id='.$_GET['id'].'\', \'Restrictions and bans will be removed from this account if you lock it. Make sure to lock only accounts that are not banned or restricted.\')" class="btn btn-danger">(Un)lock user</a>';
-							echo '	<a onclick="sure(\'submit.php?action=clearHWID&id='.$_GET['id'].'\');" class="btn btn-danger">Clear HWID matches</a>';
+							echo '	<a onclick="sure(\'/submit.php?action=banUnbanUser&id='.$_GET['id'].'\')" class="btn btn-danger">(Un)ban user</a>';
+							echo '	<a onclick="sure(\'/submit.php?action=restrictUnrestrictUser&id='.$_GET['id'].'\')" class="btn btn-danger">(Un)restrict user</a>';
+							echo '	<a onclick="sure(\'/submit.php?action=lockUnlockUser&id='.$_GET['id'].'\', \'Restrictions and bans will be removed from this account if you lock it. Make sure to lock only accounts that are not banned or restricted.\')" class="btn btn-danger">(Un)lock user</a>';
+							echo '	<a onclick="sure(\'/submit.php?action=clearHWID&id='.$_GET['id'].'\');" class="btn btn-danger">Clear HWID matches</a>';
 						}
 						if (hasPrivilege(Privileges::AdminCaker)) {
 							echo '<a href="index.php?p=128&uid=' . $_GET["id"] . '" class="btn btn-danger">Find ' . Fringuellina::$cakeRecipeName . '</a>';
@@ -700,7 +700,7 @@ class P {
 			}
 			echo '<p align="center"><font size=5><i class="fa fa-refresh"></i>	Change identity</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
-			echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
+			echo '<tbody><form id="system-settings-form" action="/submit.php" method="POST">
 
 			<input name="action" value="changeIdentity" hidden>';
 			echo '<tr>
@@ -773,7 +773,7 @@ class P {
 		}
 		echo '<p align="center"><font size=5><i class="fa fa-cog"></i>	System settings</font></p>';
 		echo '<table class="table table-striped table-hover table-50-center">';
-		echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
+		echo '<tbody><form id="system-settings-form" action="/submit.php" method="POST">
 		<input name="action" value="saveSystemSettings" hidden>';
 		echo '<tr>
 		<td>Maintenance mode (website)</td>
@@ -854,8 +854,8 @@ class P {
 			<td><p class="text-center"><i class="fa '.$badge['icon'].' fa-2x"></i></p></td>
 			<td><p class="text-center">
 			<div class="btn-group-justified">
-			<a title="Edit badge" class="btn btn-xs btn-primary" href="index.php?p=109&id='.$badge['id'].'"><span class="glyphicon glyphicon-pencil"></span></a>
-			<a title="Delete badge" class="btn btn-xs btn-danger" onclick="sure(\'submit.php?action=removeBadge&id='.$badge['id'].'\');"><span class="glyphicon glyphicon-trash"></span></a>
+			<a title="Edit badge" class="btn btn-xs btn-primary" href="/index.php?p=109&id='.$badge['id'].'"><span class="glyphicon glyphicon-pencil"></span></a>
+			<a title="Delete badge" class="btn btn-xs btn-danger" onclick="sure(\'/submit.php?action=removeBadge&id='.$badge['id'].'\');"><span class="glyphicon glyphicon-trash"></span></a>
 			</div>
 			</p></td>
 			</tr>';
@@ -863,7 +863,7 @@ class P {
 		echo '</tbody>';
 		echo '</table>';
 		echo '<div class="text-center">
-			<a href="index.php?p=109&id=0" type="button" class="btn btn-primary">Add a new badge</a>
+			<a href="/index.php?p=109&id=0" type="button" class="btn btn-primary">Add a new badge</a>
 			<a type="button" class="btn btn-success" data-toggle="modal" data-target="#quickEditUserBadgesModal">Edit user badges</a>
 		</div>';
 		echo '</div>';
@@ -877,7 +877,7 @@ class P {
 		</div>
 		<div class="modal-body">
 		<p>
-		<form id="quick-edit-user-form" action="submit.php" method="POST">
+		<form id="quick-edit-user-form" action="/submit.php" method="POST">
 
 		<input name="action" value="quickEditUserBadges" hidden>
 		<div class="input-group">
@@ -924,7 +924,7 @@ class P {
 			self::MaintenanceStuff();
 			echo '<p align="center"><font size=5><i class="fa fa-certificate"></i>	Edit badge</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
-			echo '<tbody><form id="edit-badge-form" action="submit.php" method="POST">
+			echo '<tbody><form id="edit-badge-form" action="/submit.php" method="POST">
 
 			<input name="action" value="saveBadge" hidden>';
 			echo '<tr>
@@ -974,7 +974,7 @@ class P {
 			self::MaintenanceStuff();
 			echo '<p align="center"><font size=5><i class="fa fa-certificate"></i>	Edit user badges</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
-			echo '<tbody><form id="edit-user-badges" action="submit.php" method="POST">
+			echo '<tbody><form id="edit-user-badges" action="/submit.php" method="POST">
 
 			<input name="action" value="saveUserBadges" hidden>';
 			echo '<tr>
@@ -1058,12 +1058,12 @@ class P {
 		} else {
 			$selected[2][2] = 'selected';
 		}
-		echo '<form id="uploadForm" action="submit.php" method="POST" enctype="multipart/form-data">
+		echo '<form id="uploadForm" action="/submit.php" method="POST" enctype="multipart/form-data">
 		<input form="uploadForm" name="action" value="uploadMainMenuIcon" hidden>
 		</form>
 		<p align="center"><font size=5><i class="fa fa-server"></i>	Bancho settings</font></p>';
 		echo '<table class="table table-striped table-hover table-75-center">';
-		echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
+		echo '<tbody><form id="system-settings-form" action="/submit.php" method="POST">
 		<input name="action" value="saveBanchoSettings" hidden>';
 		echo '<tr>
 		<td>Bancho maintenance mode</td>
@@ -1084,9 +1084,9 @@ class P {
 					<tr class="' . ($icon["is_current"] ? "success" : ($icon["is_default"] ? "warning": "")) . '">
 						<td><a href="https://i.ripple.moe/' . $icon["file_id"] . '.png" target="_blank">' . $icon["name"] . '</a> - <a href="' . $icon["url"] . '" target="_blank">' . $icon["url"] . '</td>
 						<td style="text-align: right">
-							<a ' . ($icon["is_current"] ? "disabled" : "") . ' title="Set as main menu icon" class="btn btn-success btn-xs" href="submit.php?action=setMainMenuIcon&id=' . $icon["id"] .'"><i class="fa fa-check"></i></a>
-							<a ' . ($icon["is_default"] ? "disabled" : "") . ' title="Set as default main menu icon" class="btn btn-info btn-xs" href="submit.php?action=setDefaultMainMenuIcon&id=' . $icon["id"] . '"><i class="fa fa-asterisk"></i></a>
-							<a title="Delete main menu icon" class="btn btn-danger btn-xs" href="submit.php?action=deleteMainMenuIcon&id=' . $icon["id"] .'"><i class="fa fa-trash"></i></a>
+							<a ' . ($icon["is_current"] ? "disabled" : "") . ' title="Set as main menu icon" class="btn btn-success btn-xs" href="/submit.php?action=setMainMenuIcon&id=' . $icon["id"] .'"><i class="fa fa-check"></i></a>
+							<a ' . ($icon["is_default"] ? "disabled" : "") . ' title="Set as default main menu icon" class="btn btn-info btn-xs" href="/submit.php?action=setDefaultMainMenuIcon&id=' . $icon["id"] . '"><i class="fa fa-asterisk"></i></a>
+							<a title="Delete main menu icon" class="btn btn-danger btn-xs" href="/submit.php?action=deleteMainMenuIcon&id=' . $icon["id"] .'"><i class="fa fa-trash"></i></a>
 						</td>
 					</tr>';
 				}
@@ -1112,8 +1112,8 @@ class P {
 					</tr>
 					<tr class="warning">
 						<td colspan="3">
-							<a style="width: 49%; float: left;" ' . ((!$hasDefault || $isDefault) ? "disabled" : "") . ' href="submit.php?action=restoreMainMenuIcon" class="btn btn-warning"><i class="fa fa-fast-backward"></i> Restore default</a>
-							<a style="width: 49%; float: right;"' . (!$hasIcon ? "disabled" : "") . ' href="submit.php?action=removeMainMenuIcon" class="btn btn-danger"><i class="fa fa-eraser"></i> Remove main menu icon</a>
+							<a style="width: 49%; float: left;" ' . ((!$hasDefault || $isDefault) ? "disabled" : "") . ' href="/submit.php?action=restoreMainMenuIcon" class="btn btn-warning"><i class="fa fa-fast-backward"></i> Restore default</a>
+							<a style="width: 49%; float: right;"' . (!$hasIcon ? "disabled" : "") . ' href="/submit.php?action=removeMainMenuIcon" class="btn btn-danger"><i class="fa fa-eraser"></i> Remove main menu icon</a>
 						</td>
 					</tr>
 				</tbody>
@@ -1427,13 +1427,13 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				$friendship = getFriendship($_SESSION['username'], $username);
 				switch ($friendship) {
 					case 1:
-						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-success"><span class="glyphicon glyphicon-star"></span>	Friend</a></div>';
+						$friendButton = '<div id="friend-button"><a href="/submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-success"><span class="glyphicon glyphicon-star"></span>	Friend</a></div>';
 					break;
 					case 2:
-						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-heart"></span>	Mutual Friend</a></div>';
+						$friendButton = '<div id="friend-button"><a href="/submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-heart"></span>	Mutual Friend</a></div>';
 					break;
 					default:
-						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>	Add as Friend</a></div>';
+						$friendButton = '<div id="friend-button"><a href="/submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>	Add as Friend</a></div>';
 					break;
 				}
 			}
@@ -1492,14 +1492,14 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			if ($usernameAka != '') {
 				echo '<small><i>A.K.A '.htmlspecialchars($usernameAka).'</i></small>';
 			}
-			echo '<br><a href="index.php?u='.$u.'&m=0">'.$modesText[0].'</a> | <a href="index.php?u='.$u.'&m=1">'.$modesText[1].'</a> | <a href="index.php?u='.$u.'&m=2">'.$modesText[2].'</a> | <a href="index.php?u='.$u.'&m=3">'.$modesText[3].'</a>';
+			echo '<br><a href="index.php?u='.$u.'&m=0">'.$modesText[0].'</a> | <a href="/index.php?u='.$u.'&m=1">'.$modesText[1].'</a> | <a href="index.php?u='.$u.'&m=2">'.$modesText[2].'</a> | <a href="index.php?u='.$u.'&m=3">'.$modesText[3].'</a>';
 
 			echo "<br>";
 			if (hasPrivilege(Privileges::AdminManageUsers)) {
-				echo '<a href="index.php?p=103&id='.$u.'">Edit user</a> | <a href="index.php?p=110&id='.$u.'">Edit badges</a>';
+				echo '<a href="index.php?p=103&id='.$u.'">Edit user</a> | <a href="/index.php?p=110&id='.$u.'">Edit badges</a>';
 			}
 			if (hasPrivilege(Privileges::AdminBanUsers)) {
-				echo ' | <a onclick="sure(\'submit.php?action=banUnbanUser&id='.$u.'\')";>Ban user</a> | <a onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$u.'\')";>Restrict user</a>';
+				echo ' | <a onclick="sure(\'/submit.php?action=banUnbanUser&id='.$u.'\')";>Ban user</a> | <a onclick="sure(\'/submit.php?action=restrictUnrestrictUser&id='.$u.'\')";>Restrict user</a>';
 			}
 			echo "</p>";
 
@@ -1775,7 +1775,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		echo '<div class="alert alert-danger animated shake" role="alert"><b><i class="fa fa-gavel"></i>	Please read the <a href="index.php?p=23" target="_blank">rules</a> before creating an account.</b></div>
 		<a href="index.php?p=16&id=1" target="_blank">Need some help?</a></p>';
 		// Print register form
-		echo '	<form action="submit.php" method="POST">
+		echo '	<form action="/submit.php" method="POST">
 
 		<input name="action" value="register" hidden>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" max-width="25%"></span></span><input type="text" name="u" required class="form-control" placeholder="Username" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
@@ -1807,7 +1807,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo '<p>Fill the form with your existing and new desired password.</p>';
 		}
 		// Print change password form
-		echo '<form action="submit.php" method="POST">
+		echo '<form action="/submit.php" method="POST">
 
 		<input name="action" value="changePassword" hidden>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" max-width="25%"></span></span><input type="password" name="pold" required class="form-control" placeholder="Current password" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
@@ -1865,7 +1865,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		};
 
 		// Print form
-		echo '<form action="submit.php" method="POST">
+		echo '<form action="/submit.php" method="POST">
 
 		<input name="action" value="saveUserSettings" hidden>
 		<div class="input-group" style="width:100%">
@@ -1983,7 +1983,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		echo '
 		<b>Current avatar:</b><br><img src="'.URL::Avatar().'/'.getUserID($_SESSION['username']).'" height="100" width="100"/>
 		<p style="line-height: 15px"></p>
-		<form action="submit.php" method="POST" enctype="multipart/form-data">
+		<form action="/submit.php" method="POST" enctype="multipart/form-data">
 
 		<input name="action" value="changeAvatar" hidden>
 		<p align="center"><input type="file" name="file"></p>
@@ -2024,7 +2024,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo '<p>Introduce yourself here! <i>(max 1500 chars)</i></p>';
 		}
 		// Print form
-		echo '<form action="submit.php" method="POST">
+		echo '<form action="/submit.php" method="POST">
 
 		<input name="action" value="saveUserpage" hidden>
 		<p align="center"><textarea name="c" class="sceditor" style="width:700px; height:400px;">'.$userpageContent.'</textarea></p>
@@ -2057,7 +2057,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo 'If you really want to fake that you\'ve lost your password, you should at the very least log out of Ripple, you know.';
 		} else {
 			echo '<p>Let\'s get some things straight. We can only help you if you DID put your actual email address when you signed up. If you didn\'t, you\'re screwed. Hope to know the admins well enough to tell them to change the password for you, otherwise your account is now dead.</p><br>
-			<form action="submit.php" method="POST">
+			<form action="/submit.php" method="POST">
 			<input name="action" value="recoverPassword" hidden>
 			<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="fa fa-user" max-width="25%"></span></span><input type="text" name="username" required class="form-control" placeholder="Type your username." aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
 			<button type="submit" class="btn btn-primary">Recover my password!</button>
@@ -2335,8 +2335,8 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				<td>".timeDifference(time(), $req["time"])."</td>
 				<td>
 					<p class='text-center'>
-						<a title='Edit ranked status' class='btn btn-xs btn-primary' href='index.php?p=124&bsid=$bsid&force=".$forceParam."'><span class='glyphicon glyphicon-pencil'></span></a>
-						<a title='Toggle blacklist' class='btn btn-xs btn-danger' href='submit.php?action=blacklistRankRequest&id=$req[id]'><span class='glyphicon glyphicon-flag'></span></a>
+						<a title='Edit ranked status' class='btn btn-xs btn-primary' href='/index.php?p=124&bsid=$bsid&force=".$forceParam."'><span class='glyphicon glyphicon-pencil'></span></a>
+						<a title='Toggle blacklist' class='btn btn-xs btn-danger' href='/submit.php?action=blacklistRankRequest&id=$req[id]'><span class='glyphicon glyphicon-flag'></span></a>
 					</p>
 				</td>
 			</tr>";
@@ -2426,7 +2426,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			self::MaintenanceStuff();
 			echo '<p align="center"><font size=5><i class="fa fa-group"></i>	Privilege Group</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
-			echo '<tbody><form id="edit-badge-form" action="submit.php" method="POST">
+			echo '<tbody><form id="edit-badge-form" action="/submit.php" method="POST">
 
 			<input name="action" value="savePrivilegeGroup" hidden>';
 			echo '<tr>
@@ -2572,7 +2572,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			}
 			$username = current($username);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
-			echo '<form id="edit-user-badges" action="submit.php" method="POST">
+			echo '<form id="edit-user-badges" action="/submit.php" method="POST">
 			<input name="action" value="giveDonor" hidden>';
 			echo '<tr>
 			<td>User ID</td>
@@ -2632,7 +2632,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			}
 			$username = current($username);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
-			echo '<form id="user-rollback" action="submit.php" method="POST">
+			echo '<form id="user-rollback" action="/submit.php" method="POST">
 			<input name="action" value="rollback" hidden>';
 			echo '<tr>
 			<td>User ID</td>
@@ -2691,7 +2691,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			}
 			$username = current($username);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
-			echo '<form id="user-wipe" action="submit.php" method="POST">
+			echo '<form id="user-wipe" action="/submit.php" method="POST">
 			<input name="action" value="wipeAccount" hidden>';
 			echo '<tr>
 			<td>User ID</td>
@@ -2780,7 +2780,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 
 		echo '
 		<div class="narrow-content">
-			<form action="submit.php" method="POST">
+			<form action="/submit.php" method="POST">
 
 				<input name="action" value="redirectRankBeatmap" hidden>
 				<input name="id" type="text" class="form-control" placeholder="Beatmap(set) id" style="width: 40%; display: inline;">
@@ -2944,21 +2944,21 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-warning">Ticket actions</li>
 					<li class="list-group-item mobile-flex">
-						<a class="btn btn-warning ' . $takeButtonDisabled . '" href="submit.php?action=takeReport&id=' . $report["id"] .'"><i class="fa fa-bolt"></i> ' . $takeButtonText .' ticket</a>
-						<a class="btn btn-success ' . $solvedButtonDisabled . '" href="submit.php?action=solveUnsolveReport&id=' . $report["id"] .'"><i class="fa fa-check"></i> ' . $solvedButtonText . '</a>
-						<a class="btn btn-danger ' . $uselessButtonDisabled . '" href="submit.php?action=uselessUsefulReport&id=' . $report["id"] .'"><i class="fa fa-trash"></i> ' . $uselessButtonText . '</a>
+						<a class="btn btn-warning ' . $takeButtonDisabled . '" href="/submit.php?action=takeReport&id=' . $report["id"] .'"><i class="fa fa-bolt"></i> ' . $takeButtonText .' ticket</a>
+						<a class="btn btn-success ' . $solvedButtonDisabled . '" href="/submit.php?action=solveUnsolveReport&id=' . $report["id"] .'"><i class="fa fa-check"></i> ' . $solvedButtonText . '</a>
+						<a class="btn btn-danger ' . $uselessButtonDisabled . '" href="/submit.php?action=uselessUsefulReport&id=' . $report["id"] .'"><i class="fa fa-trash"></i> ' . $uselessButtonText . '</a>
 					</li>
 				</ul>
 
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-danger">Quick actions</li>
 					<li class="list-group-item mobile-flex">
-						<a class="btn btn-primary" href="index.php?p=103&id=' . $report["to_uid"] . '"><i class="fa fa-expand"></i> View reported user in RAP</a>
+						<a class="btn btn-primary" href="/index.php?p=103&id=' . $report["to_uid"] . '"><i class="fa fa-expand"></i> View reported user in RAP</a>
 						<div class="btn btn-warning" data-toggle="modal" data-target="#silenceUserModal" data-who="' . getUserUsername($report["to_uid"]) . '"><i class="fa fa-microphone-slash"></i> Silence reported user</div>
 						<div class="btn btn-warning" data-toggle="modal" data-target="#silenceUserModal" data-who="' . getUserUsername($report["from_uid"]) . '"><i class="fa fa-microphone-slash"></i> Silence source user</div>
 						';
 						$restrictedDisabled = isRestricted($report["to_uid"]) ? "disabled" : "";
-						echo '<a class="btn btn-danger ' . $restrictedDisabled . '" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id=' . $report["to_uid"] . '&resend=1\')"><i class="fa fa-times"></i> Restrict reported user</a>';
+						echo '<a class="btn btn-danger ' . $restrictedDisabled . '" onclick="sure(\'/submit.php?action=restrictUnrestrictUser&id=' . $report["to_uid"] . '&resend=1\')"><i class="fa fa-times"></i> Restrict reported user</a>';
 					echo '</li>
 				</ul>
 
@@ -2978,7 +2978,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			</div>
 			<div class="modal-body">
 			<p>
-			<form id="silence-user-form" action="submit.php" method="POST">
+			<form id="silence-user-form" action="/submit.php" method="POST">
 
 			<input name="action" value="silenceUser" hidden>
 			<input name="resend" value="1" hidden>
@@ -3250,7 +3250,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo '<p align="center"><font size=5><i class="fa fa-undo"></i>	Restore scores</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
 
-			echo '<form id="restore-lookup" action="' . ($choosingUser ? 'submit.php' : 'index.php') . (!$choosingUser ? "?p=134&id=$_GET[id]" : "") . '" method="POST">
+			echo '<form id="restore-lookup" action="' . ($choosingUser ? '/submit.php' : '/index.php') . (!$choosingUser ? "?p=134&id=$_GET[id]" : "") . '" method="POST">
 
 			<input name="action" value="' . ($choosingUser ? 'restoreScoresSearchUser' : 'restoreScoresSearchScores') . '" hidden>';
 
@@ -3356,7 +3356,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 					}
 					echo '</tbody></table>';
 
-					echo '<form id="restore-scores" action="submit.php" method="POST">
+					echo '<form id="restore-scores" action="/submit.php" method="POST">
 
 					<input name="action" value="restoreScores" hidden>
 					<input name="gm" value="' . $_POST["gm"] . '" hidden>

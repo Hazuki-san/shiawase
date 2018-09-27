@@ -56,7 +56,7 @@ $("document").ready(function() {
 		},
 		success: function(data) {
 			if (data.status == 200) {
-				tableHtml = `<form id="rank-beatmap-form" action="submit.php" method="POST">
+				tableHtml = `<form id="rank-beatmap-form" action="/submit.php" method="POST">
 
 				<input name="action" value="rankBeatmapNew" hidden>`;
 				tableHtml += `

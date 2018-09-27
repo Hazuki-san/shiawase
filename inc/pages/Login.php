@@ -16,7 +16,7 @@ class Login {
 		}
 		echo '<p><a href="index.php?p=18">Forgot your password, perhaps?</a></p>';
 		// Print login form
-		echo '<form action="submit.php" method="POST">
+		echo '<form action="/submit.php" method="POST">
 		<input name="action" value="login" hidden>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" max-width="25%"></span></span><input type="text" name="u" required class="form-control" placeholder="Username" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" max-width="25%"></span></span><input type="password" name="p" required class="form-control" placeholder="Password" aria-describedby="basic-addon1"></div>
@@ -24,7 +24,7 @@ class Login {
 		<p><label><input type="checkbox" name="remember" value="yes"> Stay logged in?</label></p>
 		<p style="line-height: 15px"></p>
 		<button type="submit" class="btn btn-primary">Login</button>
-		<a href="index.php?p=3" type="button" class="btn btn-default">Sign up</a>
+		<a href="/index.php?p=3" type="button" class="btn btn-default">Sign up</a>
 		</form>
 		</div>';
 	}
