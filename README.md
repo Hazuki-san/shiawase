@@ -1,11 +1,6 @@
-## old-frontend
+## Shiawase
 
-This is Ripple's current frontend, written in PHP.
-~~This is the only part of Ripple we've not rewritten since the first version of Ripple, and it sucks.~~ We've actually rewritten also this.
-But, since the code is here just for reference, I don't think it's a huge problem.
-
-- Origin: https://git.zxq.co/ripple/old-frontend
-- Mirror: https://github.com/osuripple/old-frontend
+Verge's frontend, basically ripple but way better and faster.
 
 ## Installation
 Copy config.sample.php as config.php and edit it
