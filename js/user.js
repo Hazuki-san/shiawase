@@ -31,7 +31,7 @@ function getScores(type) {
 			var u = "<tr>";
 			u +=  '<td class="' + sw + '">\
 						<p class="text-left">\
-							<img src="images/ranks/' + getRank(Mode, v.mods, v.accuracy, v.count_300, v.count_100, v.count_50, v.count_miss) + '.png"></img> \
+							<img src="/images/ranks/' + getRank(Mode, v.mods, v.accuracy, v.count_300, v.count_100, v.count_50, v.count_miss) + '.png"></img> \
 							'+ (v.beatmap === null ? "Unknown beatmap" :  v.beatmap.song_name) +'\
 							<b>' + getScoreMods(v.mods) + '</b> (' + v.accuracy.toFixed(2) + '%) <br>\
 							<small>' + timeSince(new Date(v.time)) + ' ago</small>\

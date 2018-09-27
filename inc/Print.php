@@ -1483,7 +1483,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			<p><img id="user-avatar" src="'.URL::Avatar().'/'.$userData["id"].'" height="100" width="100" /></p>
 			<p id="username"><div style="display: inline; ' . (!empty($userData["user_color"]) ? "color: $userData[user_color];" : "") . ' font-size: 140%; '.$userStyle.'"><b>';
 			if ($country != 'XX') {
-				echo '<img src="./images/flags/'.strtolower($country).'.png">	';
+				echo '<img src="/images/flags/'.strtolower($country).'.png">	';
 			}
 			if (isOnline($userData["id"])) {
 				echo '<i class="fa fa-circle online-circle"></i>';
@@ -1504,7 +1504,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo "</p>";
 
 			echo '<div id="rank"><font size=5><b> '.$rankSymbol.$rank.'</b></font><br>';
-			if ($ScoresConfig["enablePP"] && ($m == 0 || $m == 3)) echo '<b>' . number_format($pp) . ' pp</b>';
+			if ($ScoresConfig["enablePP"] echo '<b>' . number_format($pp) . ' pp</b>';
 			echo $friendButton;
 			echo '</div>';
 			echo '</div>';
