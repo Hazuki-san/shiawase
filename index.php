@@ -100,31 +100,31 @@ if ($p == 27) {
 ?>
 
     <!-- Bootstrap Core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap select CSS -->
-    <link href="./css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-select.min.css" rel="stylesheet">
 
     <!-- Slider CSS -->
-    <link href="./css/slider.css" rel="stylesheet">
+    <link href="/css/slider.css" rel="stylesheet">
 
     <!-- Bootstrap Font Awesome Picker CSS -->
-    <link href="./css/fontawesome-iconpicker.min.css" rel="stylesheet">
+    <link href="/css/fontawesome-iconpicker.min.css" rel="stylesheet">
 
     <!-- Bootstrap Color Picker CSS -->
-    <link href="./css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
     <!-- SCEditor CSS -->
-	<link rel="stylesheet" href="./css/themes/default.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/themes/default.css" type="text/css" media="all" />
 	
     <!-- Datepicker CSS -->
-    <link href="./css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="/css/animate.css">
 
     <!-- Custom CSS -->
-    <link href="./css/style-desktop.css" rel="stylesheet">
+    <link href="/css/style-desktop.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=xQQWRwyGed">
@@ -202,25 +202,25 @@ if ($p < 100) {
 	?>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap Select JavaScript -->
-    <script src="./js/bootstrap-select.min.js"></script>
+    <script src="/js/bootstrap-select.min.js"></script>
 
     <!-- Slider JavaScript -->
-    <script src="./js/bootstrap-slider.js"></script>
+    <script src="/js/bootstrap-slider.js"></script>
 
     <!-- Bootstrap Font Awesome Picker JavaScript -->
-    <script src="./js/fontawesome-iconpicker.min.js"></script>
+    <script src="/js/fontawesome-iconpicker.min.js"></script>
 
     <!-- Bootstrap Color Picker JavaScript -->
-    <script src="./js/bootstrap-colorpicker.min.js"></script>
+    <script src="/js/bootstrap-colorpicker.min.js"></script>
 
     <!-- SCEditor JavaScript -->
-	<script src="./js/jquery.sceditor.bbcode.js"></script>
+	<script src="/js/jquery.sceditor.bbcode.js"></script>
 	
 	<!-- Datepicker -->
-	<script src="./js/bootstrap-datepicker.min.js"></script>
+	<script src="/js/bootstrap-datepicker.min.js"></script>
 
     <!-- Custom JavaScript for every page -->
 	<script type="text/javascript">
@@ -378,8 +378,8 @@ switch ($p) {
 	// Supporter page
 	case 34:
 		echo '
-			<!-- <script src="./js/money.min.js"></script> -->
-			<script src="./js/bitcoinprices.js"></script>
+			<!-- <script src="/js/money.min.js"></script> -->
+			<script src="/js/bitcoinprices.js"></script>
 			<script type="text/javascript">
 				// Called when slider changes
 				function onSlide() {
