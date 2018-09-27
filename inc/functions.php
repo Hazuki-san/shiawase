@@ -44,8 +44,23 @@ require_once $df.'/pages/BlockTotp2fa.php';
 require_once $df.'/../secret/fringuellina.php';
 $pages = [
 	new Login(),
+	new Leaderboard(),
+	new PasswordFinishRecovery(),
+	new ServerStatus(),
+	new UserLookup(),
+	new TwoFA(),
+	new TwoFASetup(),
+	new RequestRankedBeatmap(),
+	new MyAPIApplications(),
+	new EditApplication(),
+	new DeleteApplication(),
+	new Support(),
+	new Team(),
+	new IRC(),
 	new Beatmaps(),
-	new BlockTotpTwoFa()
+	new Verify(),
+	new Welcome(),
+	new Discord(),
 ];
 // Set timezone to UTC
 date_default_timezone_set('Europe/Rome');
@@ -221,7 +236,72 @@ function printPage($p) {
 			case 1:
 				P::HomePage();
 			break;
-
+				// Register page (guest)
+				case 3:
+				if (!checkLoggedIn()) {
+					P::RegisterPage();
+				} else {
+					P::LoggedInAlert();
+				}
+			break;
+				// Edit avatar (protected)
+ 			case 5:
+				sessionCheck();
+				P::ChangeAvatarPage();
+			break;
+				// Edit userpage (protected)
+ 			case 8:
+				sessionCheck();
+				P::UserpageEditorPage();
+			break;
+				// Edit user settings (protected)
+ 			case 6:
+				sessionCheck();
+				P::userSettingsPage();
+			break;
+				// Change password (protected)
+ 			case 7:
+				sessionCheck();
+				P::ChangePasswordPage();
+			break;
+				// List documentation files
+ 			case 14:
+				listDocumentationFiles();
+			break;
+				// Show documentation file (check if f is set to avoid errors and stuff)
+			break;
+				// Show documentation, v2 with database
+ 			case 16:
+				if (isset($_GET['id']) && intval($_GET['id'])) {
+					getDocPageAndParse(intval($_GET['id']));
+				} else {
+					getDocPageAndParse(null);
+				}
+			break;
+				// Show changelog
+ 			case 17:
+				P::ChangelogPage();
+			break;
+				// Password recovery
+ 			case 18:
+				P::PasswordRecovery();
+			break;
+				// About page
+ 			case 21:
+				P::AboutPage();
+			break;
+				// Rules page
+ 			case 23:
+				P::RulesPage();
+			break;
+				// Friendlist page
+ 			case 26:
+				sessionCheck();
+				P::FriendlistPage();
+			break;
+ 			case 41:
+				P::StopSign();
+			break;
 				// Admin panel (> 100 pages are admin ones)
 			case 100:
 				sessionCheckAdmin();
@@ -411,12 +491,8 @@ function printPage($p) {
 			break;
 		}
 	} else {
-		if (hasPrivilege(Privileges::AdminAccessRAP)) {
 			// Userpage
 			P::UserPage($_GET["u"], isset($_GET['m']) ? $_GET['m'] : -1);
-		} else {
-			echo "how did i get here?";
-		}
 	}
 }
 /*
@@ -434,52 +510,73 @@ function printPage($p) {
 function printNavbar() {
 	global $discordConfig;
 	echo '<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-				<div class="container">
+				<div class="container animated fadeIn">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>';
-						if (isset($_GET['p']) && $_GET['p'] >= 100) {
-						echo '<button type="button" class="navbar-toggle with-icon" data-toggle="collapse" data-target="#sidebar-wrapper">
-								<span class="glyphicon glyphicon-briefcase">
-							</button>';
-						}
 						global $isBday;
-						echo $isBday ? '<a class="navbar-brand" href="index.php"><i class="fa fa-birthday-cake"></i><img src="images/logos/text.png" style="display: inline; padding-left: 10px;"></a>' : '<a class="navbar-brand" href="index.php"><img src="images/logos/text.png"></a>';
+						echo $isBday ? '<a class="navbar-brand" href="index.php"><i class="fa fa-birthday-cake"></i><img src="images/logos/text.png" style="display: inline; padding-left: 10px;"></a>' : '<a class="navbar-brand" href="index.php"><img src="/images/logos/text.png"></a>';
 					echo '</div>
 					<div class="navbar-collapse collapse">';
 	// Left elements
 	// Not logged left elements
 	echo '<ul class="nav navbar-nav navbar-left">';
-	if (!checkLoggedIn()) {
-		echo '<li><a href="index.php?p=2"><i class="fa fa-sign-in"></i>	Login</a></li>';
-	}
+	echo '<li><a href="/leaderboard"><i class="fa fa-list-ol"></i> Leaderboard</a></li>';
+	if (checkLoggedIn())
+		echo '<li class="dropdown">
+					<a href="/beatmaplist"><i class="fa fa-th"></i>	Beatmaps</a><ul class="dropdown-menu">      
+						<li class="dropdown-submenu"><a href="/?p=31"><i class="fa fa-music"></i>	Rank Request</a></li>
+					</ul> </li><li></li>';
+	else
+		echo '<li><a href="/beatmaplist"><i class="fa fa-th"></i> Beatmaps</a></li>';
+	
 	// Logged in left elements
 	if (checkLoggedIn()) {
+        $animate = "class='animated infinite pulse'";
+        if(hasPrivilege(Privileges::UserDonor))
+        {
+        	$expire = $GLOBALS["db"]->fetch("SELECT donor_expire FROM users WHERE id = ?", [$_SESSION['userid']])['donor_expire'] - time();
+        	 $interval = floor($expire / 86400);
+        	 $animate = "";
+        	 if ($interval < 4){
+        	 	$animate = "class='animated infinite bounce'";
+        	 	 }
+        }
+		echo '<li class="support-color"><a href="/support" '.$animate.' ><i class="fa fa-heart"></i>	<b>Support</b></a>';
 		// Just an easter egg that you'll probably never notice, unless you do it on purpose.
 		if (hasPrivilege(Privileges::AdminAccessRAP)) {
-			echo '<li><a href="index.php?p=100"><i class="fa fa-cog"></i>	<b>Admin Panel</b></a></li>';
+			echo '<li><a href="/p/100"><i class="fa fa-cog"></i>	<b>Admin Panel</b></a></li>';
 		}
 	}
 	// Right elements
-	echo '</ul><ul class="nav navbar-nav navbar-right">';
-	echo '<li><input type="text" class="form-control" name="query" id="query" placeholder="Search users..."></li>';
+	echo '</ul><ul class="nav navbar-nav navbar-right ">';
+	echo '<li class="search"><input type="text" style="width:190px; margin-top: 10px;" class="form-control" name="query" id="query" placeholder="Search users..."></li>';
 	// Logged in right elements
 	if (checkLoggedIn()) {
 		global $URL;
 		echo '<li class="dropdown">
 					<a data-toggle="dropdown"><img src="'.URL::Avatar().'/'.getUserID($_SESSION['username']).'" height="22" width="22" />	<b>'.$_SESSION['username'].'</b><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li class="dropdown-submenu"><a href="index.php?u='.getUserID($_SESSION['username']).'"><i class="fa fa-user"></i> My profile</a></li>
-						<li class="dropdown-submenu"><a href="submit.php?action=logout&csrf='.csrfToken().'"><i class="fa fa-sign-out"></i>	Logout</a></li>
+						<li class="dropdown-submenu"> <a href="/u/'.getUserID($_SESSION['username']).'"><i class="fa fa-user"></i> My profile</a></li>
+						<li class="dropdown-submenu"><a href="/p/7"><i class="fa fa-key"></i> Change Password</a></li>
+                        <li class="dropdown-submenu"><a href="/p/6"><i class="fa fa-pencil"></i> User Settings</a></li>
+                        <li class="dropdown-submenu"><a href="/p/26"><i class="fa fa-users"></i> Friend list</a></li>  
+                        <li class="dropdown-submenu"><a href="/p/5"><i class="fa fa-photo"></i> Change Avatar</a></li>   
+                        <li class="dropdown-submenu"><a href="/p/8"><i class="fa fa-font"></i> Edit Userpage</a></li>  
+                        <li class="dropdown-submenu"><a href="/p/30"><i class="fa fa-vk"></i> Two-Factor Auth</a></li> 
+						<li class="dropdown-submenu"><a href="/submit.php?action=logout"><i class="fa fa-sign-out"></i>	Logout</a></li>
 					</ul>
 				</li>';
+	}else {
+		echo '<li><a href="/p/2"><i class="fa fa-sign-in"></i>	Login</a></li>';
 	}
 	// Navbar end
 	echo '</ul></div></div></nav>';
 }
+
 /*
  * printAdminSidebar
  * Prints the admin left sidebar
@@ -1814,39 +1911,8 @@ function removeFromLeaderboard($userID) {
 	}
 }
 
-function generateCsrfToken() {
-	return bin2hex(openssl_random_pseudo_bytes(32));
-}
 
-function csrfToken() {
-	if (!isset($_SESSION['csrf'])) {
-		$_SESSION['csrf'] = generateCsrfToken();
-	}
-	return $_SESSION['csrf'];
-}
 
-function csrfCheck($givenToken=NULL, $regen=true) {
-	if (!isset($_SESSION['csrf'])) {
-		return false;
-	}
-	if ($givenToken === NULL) {
-		if (isset($_POST['csrf'])) {
-			$givenToken = $_POST['csrf'];
-		} else if (isset($_GET['csrf'])) {
-			$givenToken = $_GET['csrf'];
-		} else {
-			return false;
-		}
-	}
-	if (empty($givenToken)) {
-		return false;
-	}
-	$rightToken = $_SESSION['csrf'];
-	if ($regen) {
-		$_SESSION['csrf'] = generateCsrfToken();
-	}
-	return hash_equals($rightToken, $givenToken);
-}
 
 function giveDonor($userID, $months, $add=true) {
 	$userData = $GLOBALS["db"]->fetch("SELECT username, email, donor_expire FROM users WHERE id = ? LIMIT 1", [$userID]);

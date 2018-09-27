@@ -510,7 +510,6 @@ switch ($p) {
 			var bsid='.htmlspecialchars($_GET["bsid"]).';
 			var force='.$force.';
 		</script>
-		<input id="csrf" type="hidden" value="' . csrfToken() . '">
 		<script src="/js/rankbeatmap.js"></script>';
 	break;
 

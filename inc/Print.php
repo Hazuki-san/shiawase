@@ -204,14 +204,14 @@ class P {
 			<a title="Edit user" class="btn btn-xs btn-primary" href="index.php?p=103&id='.$user['id'].'"><span class="glyphicon glyphicon-pencil"></span></a>';
 			if (hasPrivilege(Privileges::AdminBanUsers)) {
 				if (isBanned($user["id"])) {
-					echo '<a title="Unban user" class="btn btn-xs btn-success" onclick="sure(\'submit.php?action=banUnbanUser&id='.$user['id'].'&csrf=' . csrfToken() . '\')"><span class="glyphicon glyphicon-thumbs-up"></span></a>';
+					echo '<a title="Unban user" class="btn btn-xs btn-success" onclick="sure(\'submit.php?action=banUnbanUser&id='.$user['id'].''\')"><span class="glyphicon glyphicon-thumbs-up"></span></a>';
 				} else {
-					echo '<a title="Ban user" class="btn btn-xs btn-warning" onclick="sure(\'submit.php?action=banUnbanUser&id='.$user['id'].'&csrf=' . csrfToken() . '\')"><span class="glyphicon glyphicon-thumbs-down"></span></a>';
+					echo '<a title="Ban user" class="btn btn-xs btn-warning" onclick="sure(\'submit.php?action=banUnbanUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-thumbs-down"></span></a>';
 				}
 				if (isRestricted($user["id"])) {
-					echo '<a title="Remove restrictions" class="btn btn-xs btn-success" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$user['id'].'&csrf='.csrfToken().'\')"><span class="glyphicon glyphicon-ok-circle"></span></a>';
+					echo '<a title="Remove restrictions" class="btn btn-xs btn-success" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-ok-circle"></span></a>';
 				} else {
-					echo '<a title="Restrict user" class="btn btn-xs btn-warning" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$user['id'].'&csrf='.csrfToken().'\')"><span class="glyphicon glyphicon-remove-circle"></span></a>';
+					echo '<a title="Restrict user" class="btn btn-xs btn-warning" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$user['id'].'\')"><span class="glyphicon glyphicon-remove-circle"></span></a>';
 				}
 			}
 			echo '	<a title="Change user identity" class="btn btn-xs btn-danger" href="index.php?p=104&id='.$user['id'].'"><span class="glyphicon glyphicon-refresh"></span></a>
@@ -233,7 +233,6 @@ class P {
 		<div class="modal-body">
 		<p>
 		<form id="quick-edit-user-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
 		<input name="action" value="quickEditUser" hidden>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
@@ -260,7 +259,6 @@ class P {
 		<div class="modal-body">
 		<p>
 		<form id="quick-edit-user-email-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
 		<input name="action" value="quickEditUserEmail" hidden>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
@@ -287,7 +285,7 @@ class P {
 		<div class="modal-body">
 		<p>
 		<form id="silence-user-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="silenceUser" hidden>
 
 		<div class="input-group">
@@ -340,7 +338,7 @@ class P {
 		<div class="modal-body">
 		<p>
 		<form id="kick-user-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="kickUser" hidden>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
@@ -438,7 +436,6 @@ class P {
 			echo '<p align="center"><font size=5><i class="fa fa-user"></i>	Edit user</font></p>';
 			echo '<table class="table table-striped table-hover table-75-center edit-user">';
 			echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
 			<input name="action" value="saveEditUser" hidden>';
 			echo '<tr>
 			<td>ID</td>
@@ -570,7 +567,7 @@ class P {
 				</tr>';
 			}
 			echo '<tr>
-			<td>Avatar<br><a onclick="sure(\'submit.php?action=resetAvatar&id='.$_GET['id'].'&csrf='.csrfToken().'\')">(reset avatar)</a></td>
+			<td>Avatar<br><a onclick="sure(\'submit.php?action=resetAvatar&id='.$_GET['id'].'\')">(reset avatar)</a></td>
 			<td>
 				<p align="center">
 					<img src="'.URL::Avatar().'/'.$_GET['id'].'" height="50" width="50"></img>
@@ -628,7 +625,7 @@ class P {
 								}
 								echo '	<a href="index.php?p=104&id='.$_GET['id'].'" class="btn btn-info">Change identity</a>';
 								if (hasPrivilege(Privileges::UserDonor, $_GET["id"])) {
-									echo '	<a onclick="sure(\'submit.php?action=removeDonor&id='.$_GET['id'].'&csrf='.csrfToken().'\');" class="btn btn-danger">Remove donor</a>';
+									echo '	<a onclick="sure(\'submit.php?action=removeDonor&id='.$_GET['id'].'\');" class="btn btn-danger">Remove donor</a>';
 								}
 								echo '	<a href="index.php?p=121&id='.$_GET['id'].'" class="btn btn-warning">Give donor</a>';
 								echo '	<a href="index.php?u='.$_GET['id'].'" class="btn btn-primary">View profile</a>';
@@ -647,15 +644,15 @@ class P {
 							echo '	<a href="index.php?p=134&id='.$_GET["id"].'" class="btn btn-danger">Restore scores</a>';
 						}
 						if (hasPrivilege(Privileges::AdminBanUsers)) {
-							echo '	<a onclick="sure(\'submit.php?action=banUnbanUser&id='.$_GET['id'].'&csrf=' . csrfToken() . '\')" class="btn btn-danger">(Un)ban user</a>';
-							echo '	<a onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$_GET['id'].'&csrf='.csrfToken().'\')" class="btn btn-danger">(Un)restrict user</a>';
-							echo '	<a onclick="sure(\'submit.php?action=lockUnlockUser&id='.$_GET['id'].'&csrf='.csrfToken().'\', \'Restrictions and bans will be removed from this account if you lock it. Make sure to lock only accounts that are not banned or restricted.\')" class="btn btn-danger">(Un)lock user</a>';
-							echo '	<a onclick="sure(\'submit.php?action=clearHWID&id='.$_GET['id'].'&csrf='.csrfToken().'\');" class="btn btn-danger">Clear HWID matches</a>';
+							echo '	<a onclick="sure(\'submit.php?action=banUnbanUser&id='.$_GET['id'].'\')" class="btn btn-danger">(Un)ban user</a>';
+							echo '	<a onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$_GET['id'].'\')" class="btn btn-danger">(Un)restrict user</a>';
+							echo '	<a onclick="sure(\'submit.php?action=lockUnlockUser&id='.$_GET['id'].'\', \'Restrictions and bans will be removed from this account if you lock it. Make sure to lock only accounts that are not banned or restricted.\')" class="btn btn-danger">(Un)lock user</a>';
+							echo '	<a onclick="sure(\'submit.php?action=clearHWID&id='.$_GET['id'].'\');" class="btn btn-danger">Clear HWID matches</a>';
 						}
 						if (hasPrivilege(Privileges::AdminCaker)) {
 							echo '<a href="index.php?p=128&uid=' . $_GET["id"] . '" class="btn btn-danger">Find ' . Fringuellina::$cakeRecipeName . '</a>';
 						}
-						echo '		<a onclick="sure(\'submit.php?action=toggleCustomBadge&id='.$_GET['id'].'&csrf='.csrfToken().'\');" class="btn btn-danger">'.(($userStatsData["can_custom_badge"] == 1) ? "Revoke" : "Grant").' custom badge</a>';
+						echo '		<a onclick="sure(\'submit.php?action=toggleCustomBadge&id='.$_GET['id'].'\');" class="btn btn-danger">'.(($userStatsData["can_custom_badge"] == 1) ? "Revoke" : "Grant").' custom badge</a>';
 						echo '<br>
 							</li>
 						</ul>
@@ -704,7 +701,7 @@ class P {
 			echo '<p align="center"><font size=5><i class="fa fa-refresh"></i>	Change identity</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
 			echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 			<input name="action" value="changeIdentity" hidden>';
 			echo '<tr>
 			<td>ID</td>
@@ -777,7 +774,6 @@ class P {
 		echo '<p align="center"><font size=5><i class="fa fa-cog"></i>	System settings</font></p>';
 		echo '<table class="table table-striped table-hover table-50-center">';
 		echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
 		<input name="action" value="saveSystemSettings" hidden>';
 		echo '<tr>
 		<td>Maintenance mode (website)</td>
@@ -859,7 +855,7 @@ class P {
 			<td><p class="text-center">
 			<div class="btn-group-justified">
 			<a title="Edit badge" class="btn btn-xs btn-primary" href="index.php?p=109&id='.$badge['id'].'"><span class="glyphicon glyphicon-pencil"></span></a>
-			<a title="Delete badge" class="btn btn-xs btn-danger" onclick="sure(\'submit.php?action=removeBadge&id='.$badge['id'].'&csrf='.csrfToken().'\');"><span class="glyphicon glyphicon-trash"></span></a>
+			<a title="Delete badge" class="btn btn-xs btn-danger" onclick="sure(\'submit.php?action=removeBadge&id='.$badge['id'].'\');"><span class="glyphicon glyphicon-trash"></span></a>
 			</div>
 			</p></td>
 			</tr>';
@@ -882,7 +878,7 @@ class P {
 		<div class="modal-body">
 		<p>
 		<form id="quick-edit-user-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="quickEditUserBadges" hidden>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
@@ -929,7 +925,7 @@ class P {
 			echo '<p align="center"><font size=5><i class="fa fa-certificate"></i>	Edit badge</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
 			echo '<tbody><form id="edit-badge-form" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 			<input name="action" value="saveBadge" hidden>';
 			echo '<tr>
 			<td>ID</td>
@@ -979,7 +975,7 @@ class P {
 			echo '<p align="center"><font size=5><i class="fa fa-certificate"></i>	Edit user badges</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
 			echo '<tbody><form id="edit-user-badges" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 			<input name="action" value="saveUserBadges" hidden>';
 			echo '<tr>
 			<td>User</td>
@@ -1064,12 +1060,10 @@ class P {
 		}
 		echo '<form id="uploadForm" action="submit.php" method="POST" enctype="multipart/form-data">
 		<input form="uploadForm" name="action" value="uploadMainMenuIcon" hidden>
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
 		</form>
 		<p align="center"><font size=5><i class="fa fa-server"></i>	Bancho settings</font></p>';
 		echo '<table class="table table-striped table-hover table-75-center">';
 		echo '<tbody><form id="system-settings-form" action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
 		<input name="action" value="saveBanchoSettings" hidden>';
 		echo '<tr>
 		<td>Bancho maintenance mode</td>
@@ -1090,9 +1084,9 @@ class P {
 					<tr class="' . ($icon["is_current"] ? "success" : ($icon["is_default"] ? "warning": "")) . '">
 						<td><a href="https://i.ripple.moe/' . $icon["file_id"] . '.png" target="_blank">' . $icon["name"] . '</a> - <a href="' . $icon["url"] . '" target="_blank">' . $icon["url"] . '</td>
 						<td style="text-align: right">
-							<a ' . ($icon["is_current"] ? "disabled" : "") . ' title="Set as main menu icon" class="btn btn-success btn-xs" href="submit.php?action=setMainMenuIcon&id=' . $icon["id"] . '&csrf='.csrfToken(). '"><i class="fa fa-check"></i></a>
-							<a ' . ($icon["is_default"] ? "disabled" : "") . ' title="Set as default main menu icon" class="btn btn-info btn-xs" href="submit.php?action=setDefaultMainMenuIcon&id=' . $icon["id"] . '&csrf='.csrfToken(). '"><i class="fa fa-asterisk"></i></a>
-							<a title="Delete main menu icon" class="btn btn-danger btn-xs" href="submit.php?action=deleteMainMenuIcon&id=' . $icon["id"] . '&csrf='.csrfToken(). '"><i class="fa fa-trash"></i></a>
+							<a ' . ($icon["is_current"] ? "disabled" : "") . ' title="Set as main menu icon" class="btn btn-success btn-xs" href="submit.php?action=setMainMenuIcon&id=' . $icon["id"] .'"><i class="fa fa-check"></i></a>
+							<a ' . ($icon["is_default"] ? "disabled" : "") . ' title="Set as default main menu icon" class="btn btn-info btn-xs" href="submit.php?action=setDefaultMainMenuIcon&id=' . $icon["id"] . '"><i class="fa fa-asterisk"></i></a>
+							<a title="Delete main menu icon" class="btn btn-danger btn-xs" href="submit.php?action=deleteMainMenuIcon&id=' . $icon["id"] .'"><i class="fa fa-trash"></i></a>
 						</td>
 					</tr>';
 				}
@@ -1118,8 +1112,8 @@ class P {
 					</tr>
 					<tr class="warning">
 						<td colspan="3">
-							<a style="width: 49%; float: left;" ' . ((!$hasDefault || $isDefault) ? "disabled" : "") . ' href="submit.php?action=restoreMainMenuIcon&csrf='.csrfToken(). '" class="btn btn-warning"><i class="fa fa-fast-backward"></i> Restore default</a>
-							<a style="width: 49%; float: right;"' . (!$hasIcon ? "disabled" : "") . ' href="submit.php?action=removeMainMenuIcon&csrf='.csrfToken(). '" class="btn btn-danger"><i class="fa fa-eraser"></i> Remove main menu icon</a>
+							<a style="width: 49%; float: left;" ' . ((!$hasDefault || $isDefault) ? "disabled" : "") . ' href="submit.php?action=restoreMainMenuIcon" class="btn btn-warning"><i class="fa fa-fast-backward"></i> Restore default</a>
+							<a style="width: 49%; float: right;"' . (!$hasIcon ? "disabled" : "") . ' href="submit.php?action=removeMainMenuIcon" class="btn btn-danger"><i class="fa fa-eraser"></i> Remove main menu icon</a>
 						</td>
 					</tr>
 				</tbody>
@@ -1433,13 +1427,13 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				$friendship = getFriendship($_SESSION['username'], $username);
 				switch ($friendship) {
 					case 1:
-						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'&csrf='.csrfToken().'" type="button" class="btn btn-success"><span class="glyphicon glyphicon-star"></span>	Friend</a></div>';
+						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-success"><span class="glyphicon glyphicon-star"></span>	Friend</a></div>';
 					break;
 					case 2:
-						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'&csrf='.csrfToken().'" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-heart"></span>	Mutual Friend</a></div>';
+						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-heart"></span>	Mutual Friend</a></div>';
 					break;
 					default:
-						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'&csrf='.csrfToken().'" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>	Add as Friend</a></div>';
+						$friendButton = '<div id="friend-button"><a href="submit.php?action=addRemoveFriend&u='.$u.'" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>	Add as Friend</a></div>';
 					break;
 				}
 			}
@@ -1505,7 +1499,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				echo '<a href="index.php?p=103&id='.$u.'">Edit user</a> | <a href="index.php?p=110&id='.$u.'">Edit badges</a>';
 			}
 			if (hasPrivilege(Privileges::AdminBanUsers)) {
-				echo ' | <a onclick="sure(\'submit.php?action=banUnbanUser&id='.$u.'&csrf=' . csrfToken() . '\')";>Ban user</a> | <a onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$u.'&csrf='.csrfToken().'\')";>Restrict user</a>';
+				echo ' | <a onclick="sure(\'submit.php?action=banUnbanUser&id='.$u.'\')";>Ban user</a> | <a onclick="sure(\'submit.php?action=restrictUnrestrictUser&id='.$u.'\')";>Restrict user</a>';
 			}
 			echo "</p>";
 
@@ -1782,7 +1776,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		<a href="index.php?p=16&id=1" target="_blank">Need some help?</a></p>';
 		// Print register form
 		echo '	<form action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="register" hidden>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" max-width="25%"></span></span><input type="text" name="u" required class="form-control" placeholder="Username" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" max-width="25%"></span></span><input type="password" name="p1" required class="form-control" placeholder="Password" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
@@ -1814,7 +1808,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		}
 		// Print change password form
 		echo '<form action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="changePassword" hidden>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" max-width="25%"></span></span><input type="password" name="pold" required class="form-control" placeholder="Current password" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
 		<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" max-width="25%"></span></span><input type="password" name="p1" required class="form-control" placeholder="New password" aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
@@ -1872,7 +1866,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 
 		// Print form
 		echo '<form action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="saveUserSettings" hidden>
 		<div class="input-group" style="width:100%">
 			<span class="input-group-addon" id="basic-addon1" style="width:40%">Safe page title</span>
@@ -1990,7 +1984,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		<b>Current avatar:</b><br><img src="'.URL::Avatar().'/'.getUserID($_SESSION['username']).'" height="100" width="100"/>
 		<p style="line-height: 15px"></p>
 		<form action="submit.php" method="POST" enctype="multipart/form-data">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="changeAvatar" hidden>
 		<p align="center"><input type="file" name="file"></p>
 		<i>Max size: 1MB<br>
@@ -2031,7 +2025,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		}
 		// Print form
 		echo '<form action="submit.php" method="POST">
-		<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 		<input name="action" value="saveUserpage" hidden>
 		<p align="center"><textarea name="c" class="sceditor" style="width:700px; height:400px;">'.$userpageContent.'</textarea></p>
 		<p style="line-height: 15px"></p>
@@ -2064,7 +2058,6 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		} else {
 			echo '<p>Let\'s get some things straight. We can only help you if you DID put your actual email address when you signed up. If you didn\'t, you\'re screwed. Hope to know the admins well enough to tell them to change the password for you, otherwise your account is now dead.</p><br>
 			<form action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
 			<input name="action" value="recoverPassword" hidden>
 			<div class="input-group"><span class="input-group-addon" id="basic-addon1"><span class="fa fa-user" max-width="25%"></span></span><input type="text" name="username" required class="form-control" placeholder="Type your username." aria-describedby="basic-addon1"></div><p style="line-height: 15px"></p>
 			<button type="submit" class="btn btn-primary">Recover my password!</button>
@@ -2343,7 +2336,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				<td>
 					<p class='text-center'>
 						<a title='Edit ranked status' class='btn btn-xs btn-primary' href='index.php?p=124&bsid=$bsid&force=".$forceParam."'><span class='glyphicon glyphicon-pencil'></span></a>
-						<a title='Toggle blacklist' class='btn btn-xs btn-danger' href='submit.php?action=blacklistRankRequest&id=$req[id]&csrf=".csrfToken()."'><span class='glyphicon glyphicon-flag'></span></a>
+						<a title='Toggle blacklist' class='btn btn-xs btn-danger' href='submit.php?action=blacklistRankRequest&id=$req[id]'><span class='glyphicon glyphicon-flag'></span></a>
 					</p>
 				</td>
 			</tr>";
@@ -2434,7 +2427,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo '<p align="center"><font size=5><i class="fa fa-group"></i>	Privilege Group</font></p>';
 			echo '<table class="table table-striped table-hover table-50-center">';
 			echo '<tbody><form id="edit-badge-form" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 			<input name="action" value="savePrivilegeGroup" hidden>';
 			echo '<tr>
 			<td>ID</td>
@@ -2580,7 +2573,6 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			$username = current($username);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
 			echo '<form id="edit-user-badges" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
 			<input name="action" value="giveDonor" hidden>';
 			echo '<tr>
 			<td>User ID</td>
@@ -2641,7 +2633,6 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			$username = current($username);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
 			echo '<form id="user-rollback" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
 			<input name="action" value="rollback" hidden>';
 			echo '<tr>
 			<td>User ID</td>
@@ -2701,7 +2692,6 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			$username = current($username);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
 			echo '<form id="user-wipe" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
 			<input name="action" value="wipeAccount" hidden>';
 			echo '<tr>
 			<td>User ID</td>
@@ -2791,7 +2781,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 		echo '
 		<div class="narrow-content">
 			<form action="submit.php" method="POST">
-				<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 				<input name="action" value="redirectRankBeatmap" hidden>
 				<input name="id" type="text" class="form-control" placeholder="Beatmap(set) id" style="width: 40%; display: inline;">
 				<div style="width: 1%; display: inline-block;"></div>
@@ -2954,9 +2944,9 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 				<ul class="list-group">
 					<li class="list-group-item list-group-item-warning">Ticket actions</li>
 					<li class="list-group-item mobile-flex">
-						<a class="btn btn-warning ' . $takeButtonDisabled . '" href="submit.php?action=takeReport&id=' . $report["id"] .'&csrf='.csrfToken(). '"><i class="fa fa-bolt"></i> ' . $takeButtonText .' ticket</a>
-						<a class="btn btn-success ' . $solvedButtonDisabled . '" href="submit.php?action=solveUnsolveReport&id=' . $report["id"] .'&csrf='.csrfToken(). '"><i class="fa fa-check"></i> ' . $solvedButtonText . '</a>
-						<a class="btn btn-danger ' . $uselessButtonDisabled . '" href="submit.php?action=uselessUsefulReport&id=' . $report["id"] .'&csrf='.csrfToken(). '"><i class="fa fa-trash"></i> ' . $uselessButtonText . '</a>
+						<a class="btn btn-warning ' . $takeButtonDisabled . '" href="submit.php?action=takeReport&id=' . $report["id"] .'"><i class="fa fa-bolt"></i> ' . $takeButtonText .' ticket</a>
+						<a class="btn btn-success ' . $solvedButtonDisabled . '" href="submit.php?action=solveUnsolveReport&id=' . $report["id"] .'"><i class="fa fa-check"></i> ' . $solvedButtonText . '</a>
+						<a class="btn btn-danger ' . $uselessButtonDisabled . '" href="submit.php?action=uselessUsefulReport&id=' . $report["id"] .'"><i class="fa fa-trash"></i> ' . $uselessButtonText . '</a>
 					</li>
 				</ul>
 
@@ -2968,7 +2958,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 						<div class="btn btn-warning" data-toggle="modal" data-target="#silenceUserModal" data-who="' . getUserUsername($report["from_uid"]) . '"><i class="fa fa-microphone-slash"></i> Silence source user</div>
 						';
 						$restrictedDisabled = isRestricted($report["to_uid"]) ? "disabled" : "";
-						echo '<a class="btn btn-danger ' . $restrictedDisabled . '" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id=' . $report["to_uid"] . '&resend=1&csrf='.csrfToken().'\')"><i class="fa fa-times"></i> Restrict reported user</a>';
+						echo '<a class="btn btn-danger ' . $restrictedDisabled . '" onclick="sure(\'submit.php?action=restrictUnrestrictUser&id=' . $report["to_uid"] . '&resend=1\')"><i class="fa fa-times"></i> Restrict reported user</a>';
 					echo '</li>
 				</ul>
 
@@ -2989,7 +2979,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			<div class="modal-body">
 			<p>
 			<form id="silence-user-form" action="submit.php" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 			<input name="action" value="silenceUser" hidden>
 			<input name="resend" value="1" hidden>
 
@@ -3261,7 +3251,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo '<table class="table table-striped table-hover table-50-center"><tbody>';
 
 			echo '<form id="restore-lookup" action="' . ($choosingUser ? 'submit.php' : 'index.php') . (!$choosingUser ? "?p=134&id=$_GET[id]" : "") . '" method="POST">
-			<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 			<input name="action" value="' . ($choosingUser ? 'restoreScoresSearchUser' : 'restoreScoresSearchScores') . '" hidden>';
 
 			if (!$choosingUser) {
@@ -3367,7 +3357,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 					echo '</tbody></table>';
 
 					echo '<form id="restore-scores" action="submit.php" method="POST">
-					<input name="csrf" type="hidden" value="'.csrfToken().'">
+
 					<input name="action" value="restoreScores" hidden>
 					<input name="gm" value="' . $_POST["gm"] . '" hidden>
 					<input name="userid" value="' . $_GET["id"] . '" hidden>';

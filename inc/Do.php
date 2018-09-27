@@ -53,23 +53,6 @@ class D {
 			if ($GLOBALS['db']->fetch('SELECT * FROM users WHERE email = ?', $_POST['e'])) {
 				throw new Exception('An user with that email already exists!');
 			}
-			// Check captcha
-			if (!isset($_POST["g-recaptcha-response"])) {
-				throw new Exception("Invalid captcha");
-			}
-			$data = [
-				"secret" => $reCaptchaConfig["secret_key"],
-				"response" => $_POST["g-recaptcha-response"]
- 			];
-			if ($reCaptchaConfig["ip"]) {
-				$data[] = [
-					"ip" => $ip
-				];
-			}
-			$reCaptchaResponse = postJsonCurl("https://www.google.com/recaptcha/api/siteverify", $data, $timeout = 10);
-			if (!$reCaptchaResponse["success"]) {
-				throw new Exception("Invalid captcha");
-			}
 			// Multiacc notice if needed
 			$multiIP = multiaccCheckIP($ip);
 			$multiToken = multiaccCheckToken();
@@ -100,7 +83,6 @@ class D {
 			foreach (['std', 'taiko', 'ctb', 'mania'] as $m) {
 				Leaderboard::Update($uid, 0, $m);
 			}
-			@Schiavo::CM("User (**$_POST[u]** | $_POST[e]) registered (successfully) from **" . $ip . "**");
 			// Generate and set identity token ("y" cookie)
 			setYCookie($uid);
 			// log user ip

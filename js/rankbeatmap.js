@@ -57,7 +57,7 @@ $("document").ready(function() {
 		success: function(data) {
 			if (data.status == 200) {
 				tableHtml = `<form id="rank-beatmap-form" action="submit.php" method="POST">
-				<input name="csrf" type="hidden" value="${$("#csrf").val()}">
+
 				<input name="action" value="rankBeatmapNew" hidden>`;
 				tableHtml += `
 					<table id="ranktable" class="table table-striped table-hover">

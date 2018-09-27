@@ -62,9 +62,6 @@ class Login {
 			setYCookie($us["id"]);
 			// Old frontend shall be seen by no human on earth. Except for
 			// staff members. Those aren't human.
-			if (!hasPrivilege(Privileges::AdminAccessRAP, $us["id"])) {
-				redirect("https://ripple.moe/login");
-			}
 
 			// Get username with right case
 			$username = $us['username'];
@@ -75,7 +72,6 @@ class Login {
 			$_SESSION['userid'] = $us['id'];
 			$_SESSION['password'] = $us['password_md5'];
 			$_SESSION['passwordChanged'] = false;
-			$_SESSION['csrf'] = csrfToken();
 			
 			// Check if the user requested to be remembered. If they did, initialise cookies.
 			if (isset($_POST['remember']) && (bool) $_POST['remember']) {
