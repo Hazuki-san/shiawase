@@ -48,8 +48,6 @@ $pages = [
 	new PasswordFinishRecovery(),
 	new ServerStatus(),
 	new UserLookup(),
-	new TwoFA(),
-	new TwoFASetup(),
 	new RequestRankedBeatmap(),
 	new MyAPIApplications(),
 	new EditApplication(),
