@@ -85,8 +85,7 @@ class Support {
 						</div>
 					</div>
 					<div class="col-sm-4">
-						<div align="center"><span class="label label-default">Coming soon</span></div>
-						<div class="col-padding coming-soon">
+						<div class="col-padding ">
 							<h3><i class="fa fa-quote-left"></i>	Username change</h3>
 							<p>Everyone gets a free username change. If you are a donor, you will be able to <b>change your username twice!</b></p>
 						</div>
@@ -130,7 +129,7 @@ class Support {
 								}
 
 								echo '</td></tr>
-								<tr><td><input type="hidden" name="on1" value="Ripple user to give donor">Ripple user to give donor</td></tr><tr><td><input type="text" name="os1" maxlength="200" value="'.$_SESSION["username"].'"></td></tr>
+								<tr><td><input type="hidden" name="on1" value="Verge user to give donor">Verge user to give donor</td></tr><tr><td><input type="text" name="os1" maxlength="200" value="'.$_SESSION["username"].'"></td></tr>
 								</table>
 								<!-- <input type="hidden" name="currency_code" value="EUR"> -->
 								<input type="hidden" name="business" value="'.$paypalConfig["email"].'">
@@ -146,14 +145,6 @@ class Support {
 								<!-- <input type="image" src="https://www.paypalobjects.com/it_IT/IT/i/btn/btn_buynowCC_LG.gif" border="0" name="submit"> -->
 								<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
 							</form>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="col-padding">
-							<h3><i class="fa fa-btc"></i>	Prefer Bitcoin?</h3>
-							<b id="supporter-btc" hidden>Send <span id="supporter-btc-price"></span> mBTC to this Bitcoin address:</b><br>
-							132HMmzADGG7fGfwuqUSP7gahTWVLkfZLR<br>
-							<b>Afterwards, please send an email to <u><a href="mailto:howl@ripple.moe">howl@ripple.moe</a></u> containing the transaction hash!</b>
 						</div>
 					</div>
 				</div>
