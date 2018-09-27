@@ -1504,7 +1504,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			echo "</p>";
 
 			echo '<div id="rank"><font size=5><b> '.$rankSymbol.$rank.'</b></font><br>';
-			if ($ScoresConfig["enablePP"] echo '<b>' . number_format($pp) . ' pp</b>';
+			if ($ScoresConfig["enablePP"]) echo '<b>' . number_format($pp) . ' pp</b>';
 			echo $friendButton;
 			echo '</div>';
 			echo '</div>';
