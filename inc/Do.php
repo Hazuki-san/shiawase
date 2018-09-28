@@ -66,7 +66,6 @@ class D {
 				}
 				$multiUsername = $multiUserInfo["username"];
 				$multiUserID = $multiUserInfo["userid"];
-				@Schiavo::CM("User **$_POST[u]** registered from same $criteria as **$multiUsername** (https://ripple.moe/?u=$multiUserID). **POSSIBLE MULTIACCOUNT!!!**. Waiting for ingame verification...");
 			}
 			// Create password
 			$md5Password = password_hash(md5($_POST['p1']), PASSWORD_DEFAULT);
@@ -1391,7 +1390,7 @@ class D {
 			} else {
 				$bsid = $GLOBALS["db"]->fetch("SELECT beatmapset_id FROM beatmaps WHERE beatmap_id = ? LIMIT 1", [$_POST["id"]]);
 				if (!$bsid) {
-					throw new Exception("Beatmap set not found in ripple's database. Please use beatmap set id or load at least one difficulty in game before trying to rank a beatmap by its id.");
+					throw new Exception("Beatmap set not found in verge's database. Please use beatmap set id or load at least one difficulty in game before trying to rank a beatmap by its id.");
 				}
 				$bsid = current($bsid);
 			}

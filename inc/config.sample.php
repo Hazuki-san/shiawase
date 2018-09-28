@@ -8,9 +8,9 @@ define('DATABASE_WHAT', 'host');		// "host" or unix socket path
 
 // Server urls, no slash
 $URL = [
-	'avatar' => 'https://a.ripple.moe',
-	'server' => 'https://ripple.moe',
-	'bancho' => 'http://c.ripple.moe',
+	'avatar' => 'https://a.verge.moe',
+	'server' => 'https://verge.moe',
+	'bancho' => 'http://c.verge.moe',
 	'scores' => 'http://127.0.0.1:5002'
 ];
 
@@ -47,7 +47,7 @@ $ServerStatusConfig = [
 		'bancho_url'        => 'http://127.0.0.1:5001', // Bancho URL
 		'avatars_url'       => 'http://127.0.0.1:5000', // Avatar server URL
 		'beatmap_url'       => 'http://bcache.zxq.co', 	// Beatmap mirror URL
-		'api_url'           => 'http://127.0.0.1/api', 	// Ripple API URL
+		'api_url'           => 'http://127.0.0.1/api', 	// Verge API URL
 		'lets_url'          => 'http://127.0.0.1:5002', // LETS URL
 	],
 
@@ -118,7 +118,7 @@ $paypalConfig = [
 	"sandbox" => false
 ];
 
-// Leave empty for ripple clones
+// Leave empty for r clones
 $gooseKey = "";
 $paypalTgConfig = [
 	"token" => "",

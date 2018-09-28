@@ -1,6 +1,6 @@
 <?php
 /*
- * Ripple functions file
+ * Verge functions file
  * include this to include the world
 */
 // Include config file and db class
@@ -95,7 +95,7 @@ function redirect($url) {
  * @param (string) ($fn) Output file name
  * @param ($v) Variable to output
 */
-function outputVariable($v, $fn = "/tmp/ripple.txt") {
+function outputVariable($v, $fn = "/tmp/verge.txt") {
 	file_put_contents($fn, var_export($v, true), FILE_APPEND);
 }
 function SendMail($to,$title, $text){
@@ -145,7 +145,7 @@ function getIP() {
 */
 function setTitle($p) {
 	if (isset($_COOKIE['st']) && $_COOKIE['st'] == 1) {
-		// Safe title, so Peppy doesn't know we are browsing Ripple
+		// Safe title, so Peppy doesn't know we are browsing Verge
 		return '<title>Google</title>';
 	} else {
 		$namesRipple = [
@@ -196,11 +196,11 @@ function setTitle($p) {
 			134 => 'Restore scores'
 		];
 		if (isset($namesRipple[$p])) {
-			return __maketitle('Ripple', $namesRipple[$p]);
+			return __maketitle('Verge', $namesRipple[$p]);
 		} else if (isset($namesRAP[$p])) {
-			return __maketitle('RAP', $namesRAP[$p]);
+			return __maketitle('VAP', $namesRAP[$p]);
 		} else {
-			return __maketitle('Ripple', '404');
+			return __maketitle('Verge', '404');
 		}
 	}
 }
@@ -1954,24 +1954,14 @@ function giveDonor($userID, $months, $add=true) {
 	}
 	// Send email
 	// Feelin' peppy-y
-	if ($months >= 20) $TheMoreYouKnow = "Did you know that your donation accounts for roughly one month of keeping the main server up? That's crazy! Thank you so much!";
-	else if ($months >= 15 && $months < 20) $TheMoreYouKnow = "Normally we would say how much of our expenses a certain donation pays for, but your donation is halfway through paying the domain for 1 year and paying the main server for 1 month. So we don't really know what to say here: your donation pays for about 75% of keeping the server up one month. Thank you so much!";
-	else if ($months >= 10 && $months < 15) $TheMoreYouKnow = "You know what we could do with the amount you donated? We could probably renew the domain for one more year! Although your money is more likely to end up being spent on paying the main server. Thank you so much!";
-	else if ($months >= 4 && $months < 10) $TheMoreYouKnow = "Your donation will help to keep the beatmap mirror we set up for Ripple up for one month! Thanks a lot!";
-	else if ($months >= 1 && $months < 4) $TheMoreYouKnow =  "With your donation, we can afford to keep up the error logging server, which is a little VPS on which we host an error logging service (Sentry). Thanks a lot!";
+	if ($months >= 20) $TheMoreYouKnow = "Without donators like you, we would be unable to keep verge running, you're able to fund both verge servers, the domain and the beatmap mirror, thanks.";
+	else if ($months >= 15 && $months < 20) $TheMoreYouKnow = "You've went above and beyond with your donation, thank you so much.";
+	else if ($months >= 10 && $months < 15) $TheMoreYouKnow = "With how much your donation gave us, we're able to keep both Verge servers up and the beatmap mirror, isn't that crazy?";
+	else if ($months >= 4 && $months < 10) $TheMoreYouKnow = "Did you know that your donation means we can keep both servers up!";
+	else if ($months >= 1 && $months < 4) $TheMoreYouKnow =  "Did you know that your donation helps keep one of our servers up?";
 	
 	global $MailgunConfig;
-	$mailer = new SimpleMailgun($MailgunConfig);
-	$mailer->Send(
-		'Ripple <noreply@'.$MailgunConfig['domain'].'>', $userData['email'],
-		'Thank you for donating!',
-		sprintf(
-			"Hey %s! Thanks for donating to Ripple. It's thanks to the support of people like you that we can afford keeping the service up. Your donation has been processed, and you should now be able to get the donator role on discord, and have access to all the other perks listed on the \"Support us\" page.<br><br>%s<br><br>Your donor expires in %s months. Until then, have fun!<br>The Ripple Team",
-			$username,
-			$TheMoreYouKnow,
-			$monthsExpire
-		)
-	);
+	$ma = SendMail($userData["email"], 'Thank you for supporting Verge!', "Thank you for supporting Verge, ".$userData["username"]."!\nWithout you, Verge wouldn't be possible!\n\n".$TheMoreYouKnow)
 	return $monthsExpire;
 }
 
