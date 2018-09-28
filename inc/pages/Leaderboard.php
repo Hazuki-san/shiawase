@@ -100,7 +100,7 @@ LIMIT $offset, 100;");
 			echo '<tr class="'.$tc.'">
 			<td><b>'.$rankSymbol.$offset.'</b></td>';
 			$country = strtolower($lbUser['country']);
-			echo '<td><img src="/images/flags/'.$country.'.png" width="18px"/>	<a href="index.php?u='.$lbUser['id'].'&m='.$m.'">'.$lbUser['username'].'</a></td>
+			echo '<td><img src="/images/flags/'.strtoupper($country).'.png" width="18px"/>	<a href="index.php?u='.$lbUser['id'].'&m='.$m.'">'.$lbUser['username'].'</a></td>
 			<td>'.$score.'</td>
 			<td>'.(is_numeric($lbUser['avg_accuracy_'.$modeForDB]) ? accuracy($lbUser['avg_accuracy_'.$modeForDB]) : '0.00').'%</td>
 			<td>'.number_format($lbUser['playcount_'.$modeForDB]).'<i> (lvl.'.$lbUser['level_'.$modeForDB].')</i></td>
