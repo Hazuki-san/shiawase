@@ -1439,7 +1439,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			<p><img id="user-avatar" src="'.URL::Avatar().'/'.$userData["id"].'" height="100" width="100" /></p>
 			<p id="username"><div style="display: inline; ' . (!empty($userData["user_color"]) ? "color: $userData[user_color];" : "") . ' font-size: 140%; '.$userStyle.'"><b>';
 			if ($country != 'XX') {
-				echo '<img src="/images/flags/'.strtoupper($country).'.png" width="16px" data-content="'.$c[strtoupper($country)].'">	';
+				echo '<img src="/images/flags/'.strtoupper($country).'.png" width="16px" title="'.$c[strtoupper($country)].'">	';
 			}
 			if (isOnline($userData["id"])) {
 				echo '<i class="fa fa-circle online-circle"></i>';
