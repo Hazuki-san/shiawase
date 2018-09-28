@@ -1961,7 +1961,7 @@ function giveDonor($userID, $months, $add=true) {
 	else if ($months >= 1 && $months < 4) $TheMoreYouKnow =  "Did you know that your donation helps keep one of our servers up?";
 	
 	global $MailgunConfig;
-	$ma = SendMail($userData["email"], 'Thank you for supporting Verge!', "Thank you for supporting Verge, ".$userData["username"]."!\nWithout you, Verge wouldn't be possible!\n\n".$TheMoreYouKnow)
+	$ma = SendMail($userData["email"], 'Thank you for supporting Verge!', "Thank you for supporting Verge, ".$userData["username"]."!\nWithout you, Verge wouldn't be possible!\n\n".$TheMoreYouKnow);
 	return $monthsExpire;
 }
 
