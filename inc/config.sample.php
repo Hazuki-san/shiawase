@@ -20,7 +20,8 @@ $EMAIL [
 	'smtpClient' => 'ssl://smtp.yandex.ru',
 	'email' => 'support@verge.moe',
 	'password' => ''
-]
+	
+];
 
 // Changelog config
 $ChangelogConfig = [
