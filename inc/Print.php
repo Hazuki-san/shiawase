@@ -2050,7 +2050,7 @@ WHERE users.$kind = ? LIMIT 1", [$u]);
 			self::ExceptionMessage($exceptions[$_GET['e']]);
 		}
 		if (isset($_GET['s'])) {
-			self::SuccessMessage('You should have received an email containing instructions on how to recover your Ripple account.');
+			self::SuccessMessage('Password Reset Sent, if you don\'t see it, please check your spam folder.');
 		}
 		if (checkLoggedIn()) {
 			echo 'What are you doing here? You\'re already logged in, you moron!<br>';

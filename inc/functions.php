@@ -101,7 +101,7 @@ function outputVariable($v, $fn = "/tmp/ripple.txt") {
 function SendMail($to,$title, $text){
 	global $emailPass;
 	$pass = ""; // edit
-	$mailSMTP = new SendMailSmtpClass('support@verge.moe', $pass, 'ssl://smtp.zoho.com', "Verge <support@verge.moe>", 465);
+	$mailSMTP = new SendMailSmtpClass('support@verge.moe', $pass, 'ssl://smtp.yandex.ru', "Verge <support@verge.moe>", 465);
 	$headers= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-type: text/html; charset=utf-8\r\n";
 	$headers .= "From: Verge <support@verge.moe>\r\n";
