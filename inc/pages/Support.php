@@ -3,7 +3,7 @@
 class Support {
 	const PageID = 34;
 	const URL = 'support';
-	const Title = 'Ripple - Support us';
+	const Title = 'Verge - Support us';
 	const LoggedIn = true;
 	public $error_messages = [];
 	public $mh_GET = [];
