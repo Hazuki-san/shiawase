@@ -67,11 +67,11 @@ if (isset($_GET['p'])) {
 	}
 	if (!$found) {
 		$p = 1;
-		$title = '<title>Ripple</title>';
+		$title = '<title>Verge</title>';
 	}
 } else {
 	$p = 1;
-	$title = '<title>Ripple</title>';
+	$title = '<title>Verge</title>';
 }
 ?>
 <!DOCTYPE html>
@@ -119,7 +119,7 @@ if ($p == 27) {
 	
     <!-- Datepicker CSS -->
     <link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-
+	<link href="/css/verge.css" rel="stylesheet">
     <!-- Animate CSS -->
     <link rel="stylesheet" href="/css/animate.css">
 
