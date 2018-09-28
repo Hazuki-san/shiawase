@@ -102,7 +102,7 @@ function SendMail($to,$title, $text){
 	global $EMAIL;
 	$pass = $EMAIL["password"];
 	$emailAddr = $EMAIL["email"];
-	$smtpUrl = $EMAIL["smtpClient"]
+	$smtpUrl = $EMAIL["smtpClient"];
 
 	$mailSMTP = new SendMailSmtpClass($emailAddr, $pass, $smtpUrl, "Verge <support@verge.moe>", 465);
 	$headers= "MIME-Version: 1.0\r\n";
