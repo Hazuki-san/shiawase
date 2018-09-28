@@ -14,6 +14,14 @@ $URL = [
 	'scores' => 'http://127.0.0.1:5002'
 ];
 
+// Yandex is reccomended therefore thats default
+
+$EMAIL [
+	'smtpClient' => 'ssl://smtp.yandex.ru',
+	'email' => 'support@verge.moe',
+	'password' => ''
+]
+
 // Changelog config
 $ChangelogConfig = [
 	// If in the commit message any of these words appear, don't show the commit in the changelog.

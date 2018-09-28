@@ -99,9 +99,12 @@ function outputVariable($v, $fn = "/tmp/ripple.txt") {
 	file_put_contents($fn, var_export($v, true), FILE_APPEND);
 }
 function SendMail($to,$title, $text){
-	global $emailPass;
-	$pass = ""; // edit
-	$mailSMTP = new SendMailSmtpClass('support@verge.moe', $pass, 'ssl://smtp.yandex.ru', "Verge <support@verge.moe>", 465);
+	global $EMAIL;
+	$pass = $EMAIL["password"];
+	$emailAddr = $EMAIL["email"];
+	$smtpUrl = $EMAIL["smtpClient"]
+
+	$mailSMTP = new SendMailSmtpClass($emailAddr, $pass, $smtpUrl, "Verge <support@verge.moe>", 465);
 	$headers= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-type: text/html; charset=utf-8\r\n";
 	$headers .= "From: Verge <support@verge.moe>\r\n";
