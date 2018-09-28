@@ -539,11 +539,11 @@ function printNavbar() {
 	echo '<li><a href="/leaderboard"><i class="fa fa-list-ol"></i> Leaderboard</a></li>';
 	if (checkLoggedIn())
 		echo '<li class="dropdown">
-					<a href="/beatmaplist"><i class="fa fa-th"></i>	Beatmaps</a><ul class="dropdown-menu">      
+					<a href="#"><i class="fa fa-th"></i>	Beatmaps</a><ul class="dropdown-menu">      
 						<li class="dropdown-submenu"><a href="/?p=31"><i class="fa fa-music"></i>	Rank Request</a></li>
 					</ul> </li><li></li>';
 	else
-		echo '<li><a href="/beatmaplist"><i class="fa fa-th"></i> Beatmaps</a></li>';
+		echo '<li><a href="#"><i class="fa fa-th"></i> Beatmaps</a></li>';
 	
 	// Logged in left elements
 	if (checkLoggedIn()) {
