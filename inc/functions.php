@@ -5,6 +5,7 @@
 */
 // Include config file and db class
 $df = dirname(__FILE__);
+require_once $df.'/SendMailSmtpClass.php';
 require_once $df.'/config.php';
 require_once $df.'/db.php';
 require_once $df.'/password_compat.php';
@@ -96,6 +97,16 @@ function redirect($url) {
 */
 function outputVariable($v, $fn = "/tmp/ripple.txt") {
 	file_put_contents($fn, var_export($v, true), FILE_APPEND);
+}
+function SendMail($to,$title, $text){
+	global $emailPass;
+	$pass = ""; // edit
+	$mailSMTP = new SendMailSmtpClass('support@verge.moe', $pass, 'ssl://smtp.zoho.com', "Verge <support@verge.moe>", 465);
+	$headers= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-type: text/html; charset=utf-8\r\n";
+	$headers .= "From: Verge <support@verge.moe>\r\n";
+	$result =  $mailSMTP->send($to, $title,$text, $headers); 
+	return $result;
 }
 /*
  * randomString

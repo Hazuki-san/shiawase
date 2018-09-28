@@ -154,8 +154,7 @@ class D {
 			}
 			$key = randomString(80);
 			$GLOBALS['db']->execute('INSERT INTO password_recovery (k, u) VALUES (?, ?);', [$key, $username]);
-			$mailer = new SimpleMailgun($MailgunConfig);
-			$mailer->Send('Ripple <noreply@'.$MailgunConfig['domain'].'>', $user['email'], 'Ripple password recovery instructions', sprintf("Hey %s! Someone, which we really hope was you, requested a password reset for your account. In case it was you, please <a href='%s'>click here</a> to reset your password on Ripple. Otherwise, silently ignore this email.", $username, 'http://'.$_SERVER['HTTP_HOST'].'/index.php?p=19&k='.$key.'&user='.$username));
+			$ma = SendMail($user['email'], 'Verge password recovery instructions', sprintf("Hey %s! Someone, which we really hope was you, requested a password reset for your account. In case it was you, please <a href='%s'>click here</a> to reset your password on Verge. Otherwise, silently ignore this email.", $username, 'https://debug.verge.moe/p/19&k='.$key.'&user='.$username));
 			redirect('index.php?p=18&s=sent');
 		}
 		catch(Exception $e) {
