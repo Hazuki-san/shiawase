@@ -110,7 +110,7 @@ class Support {
 				</div>
 				<div class="row" align="center">
 					<div class="col-sm-6">
-						<div class="col-padding">
+						<div class="col-padding" align="center">
 							<h3><i class="fa fa-paypal"></i>	Prefer PayPal?</h3></h3>
 							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_self">
 								<table>
