@@ -108,6 +108,7 @@ class Support {
 					</p>
 					<hr>
 				</div>
+				<center>
 				<div class="row" align="center">
 					<div class="col-sm-6">
 						<div class="col-padding" align="center">
