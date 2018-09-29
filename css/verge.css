@@ -1,5 +1,9 @@
 .navbar-inverse {
     background-image: url(/images/nav.png);
+    
+}
+
+.linear {
     background-image: linear-gradient(rgba(68,17,136,.9),#418 75%,#418);
 }
 .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a>b {
