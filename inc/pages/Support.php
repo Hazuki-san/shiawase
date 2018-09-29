@@ -36,7 +36,7 @@ class Support {
 					<h1 class="support-color"><i class="fa fa-heart animated infinite pulse"></i>	Support us</h1>
 					<br>
 					<p class="half">
-						We, the <b>Ripple developers</b>, run Ripple in our spare time, and keeping it up is <b>quite expensive</b>, both in money and effort. We have been building Ripple ever since <b>August 2015</b>, and we are doing our best every day to fix bugs, implement features, and generally speaking <b>keeping the server up</b>. If you like Ripple, you should <b>really consider supporting us</b>: it\'d help us a lot to pay all the expenses that come with having such a <b>rapidly growing service</b>.
+						We, the <b>Verge Team</b>, run Verge in our spare time, and keeping it up is <b>quite expensive</b>. Donating helps us a lot to pay all the expenses that come with having such a <b>rapidly growing service</b>.
 					</p>
 				</div>
 				<div class="row"><hr>';
