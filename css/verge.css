@@ -1,11 +1,16 @@
 .navTriangles {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
     display: block;
     background-size: 640px 360px;
     background-image: url(/images/nav.png) !important;
 }
 
 .navbar-inverse {
-    background-image: linear-gradient(rgba(187, 17, 119, 0.914), rgb(187, 17, 119) 75%, rgb(187, 17, 119));
+    background-image: linear-gradient(rgba(68,17,136,.9),#418 75%,#418)!important;
 }
 
 .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a>b {
