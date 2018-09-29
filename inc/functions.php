@@ -521,7 +521,8 @@ function printPage($p) {
 */
 function printNavbar() {
 	global $discordConfig;
-	echo '<nav class="linear navbar navbar-inverse navbar-fixed-top" role="navigation">
+	echo '<div class="navTriangles></div>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container animated fadeIn">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
