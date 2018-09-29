@@ -880,7 +880,7 @@ class D {
 				throw new Exception(3);
 			}
 			// Resize (doesn't work to any reason)
-			if (!smart_resize_image($_FILES['file']['tmp_name'], null, 100, 100, false, dirname(dirname(dirname(__FILE__))).'/avatar-server/avatars/'.getUserID($_SESSION['username']).'.png', false, false, 100)) {
+			if (!smart_resize_image($_FILES['file']['tmp_name'], null, 100, 100, false, dirname(dirname(dirname(dirname(__FILE__))).'/avatar-server/avatars/'.getUserID($_SESSION['username']).'.png', false, false, 100)) {
 				throw new Exception(4);
 			}
 			// THIS ONE WONT RESIZE THINK ABOUT DISK SPACE AND INGAME BUGS (too big pictures or sth)
