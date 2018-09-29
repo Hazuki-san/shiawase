@@ -1,10 +1,11 @@
 .navTriangles {
+    display: block;
     background-size: 640px 360px;
     background-image: url(/images/nav.png) !important;
 }
 
 .navbar-inverse {
-    background-image: linear-gradient(rgba(68,17,136,.9),#418 75%,#418);
+    background-image: linear-gradient(rgba(187, 17, 119, 0.914), rgb(187, 17, 119) 75%, rgb(187, 17, 119));
 }
 
 .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a>b {
