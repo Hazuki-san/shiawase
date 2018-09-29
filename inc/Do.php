@@ -862,10 +862,6 @@ class D {
 		try {
 			// Check if we are logged in
 			sessionCheck();
-			// Restricted check
-			if (isRestricted()) {
-				throw new Exception(5);
-			}
 			// Check if everything is set
 			if (!isset($_FILES['file'])) {
 				throw new Exception(0);
@@ -883,14 +879,14 @@ class D {
 			if ($_FILES['file']['size'] > 1000000) {
 				throw new Exception(3);
 			}
-			// Resize
+			// Resize (doesn't work to any reason)
 			if (!smart_resize_image($_FILES['file']['tmp_name'], null, 100, 100, false, dirname(dirname(dirname(__FILE__))).'/avatar-server/avatars/'.getUserID($_SESSION['username']).'.png', false, false, 100)) {
 				throw new Exception(4);
 			}
-			/* "Convert" to png
-												if (!move_uploaded_file($_FILES["file"]["tmp_name"], dirname(dirname(dirname(__FILE__)))."/avatarserver/avatars/".getUserID($_SESSION["username"]).".png")) {
-												    throw new Exception(4);
-												}*/
+			// THIS ONE WONT RESIZE THINK ABOUT DISK SPACE AND INGAME BUGS (too big pictures or sth)
+			//if (!move_uploaded_file($_FILES["file"]["tmp_name"], dirname(dirname(dirname(__FILE__)))."/a.ppy.sh/avatars/".getUserID($_SESSION["username"]).".png")) {
+			//    throw new Exception(4);
+			//}
 			// Done, redirect to success page
 			redirect('index.php?p=5&s=ok');
 		}
